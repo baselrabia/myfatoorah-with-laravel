@@ -31,4 +31,20 @@ Otherwise, the final step is to add the service provider. Open `config/app.php`,
 	Basel\MyFatoorah\MyFatoorahServiceProvider::class,
 ],
 ```
- 
+## test card:
+
+### Checkout Process Demo
+
+Please use these ‘test card’ details for your demo
+
+```php
+
+"card": {
+	"Number":"5123450000000008",
+       	"expiryMonth":"05",
+       	"expiryYear":"21",
+       	"securityCode":"100"
+	},
+```
+
+
