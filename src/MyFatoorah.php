@@ -2,6 +2,7 @@
 
 namespace Basel\MyFatoorah;
 
+use App\Http\Exception\MFInvalidArgumentException;
 use Basel\MyFatoorah\Http\MFConnect;
  
 
@@ -79,6 +80,52 @@ class MyFatoorah extends MFConnect
         return $this->postJson($url, $parameters, $this->header);
     }
 
+    /**
+     * @param $key
+     * @param $keyType
+     * @param $params
+     * @return mixed|string
+     */
+    public function makeRefund($key, $keyType, $params)
+    {
+        $parameters = [
+            'Key' => $key,
+            'KeyType' => $keyType,
+        ];
+
+        if (array_key_exists('RefundChargeOnCustomer', $params)) {
+            if (!is_bool($params['RefundChargeOnCustomer'])) {
+                throw new MFInvalidArgumentException(
+                    "RefundChargeOnCustomer accepts only true or false boolean values"
+                );
+            }
+            $parameters['RefundChargeOnCustomer'] = $params['RefundChargeOnCustomer'];
+        }
+
+        if (array_key_exists('ServiceChargeOnCustomer', $params)) {
+            if (!is_bool($params['ServiceChargeOnCustomer'])) {
+                throw new MFInvalidArgumentException(
+                    "ServiceChargeOnCustomer accepts only true or false boolean values"
+                );
+            }
+            $parameters['ServiceChargeOnCustomer'] = $params['ServiceChargeOnCustomer'];
+        }
+
+        if (array_key_exists('Amount', $params)) {
+            $parameters['Amount'] = $params['Amount'];
+        }
+
+        if (array_key_exists('Comment', $params)) {
+            $parameters['Comment'] = $params['Comment'];
+        }
+
+        if (array_key_exists('AmountDeductedFromSupplier', $params)) {
+            $parameters['AmountDeductedFromSupplier'] = $params['AmountDeductedFromSupplier'];
+        }
+
+        $url = $this->getUrl('MakeRefund');
+        return $this->postJson($url, $parameters, $this->header);
+    }
 
 
 }
