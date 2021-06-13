@@ -47,9 +47,11 @@ class MyFatoorah extends MFConnect
         ];
 
         $myfa_params = [
-            'MobileCountryCode', 'CustomerMobile', 'CustomerEmail','Language', 'CustomerReference',
+            'ErrorUrl','CallBackUrl','DisplayCurrencyIso' ,'MobileCountryCode', 'CustomerMobile', 'CustomerEmail','Language', 'CustomerReference',
             'CustomerCivilId', 'UserDefinedField', 'ExpireDate', 'CustomerAddress', 'InvoiceItems'
         ];
+
+
 
 
         foreach ($myfa_params as $myfa_param) {
