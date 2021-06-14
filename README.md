@@ -21,7 +21,7 @@ php artisan migrate
  - last step  in your `.env` file, Add   // you don't have to do this step if you are testing the package
 
 ```php
-MYFATOORAHTOKEN=************** 
+MYFATOORAH_TOKEN=************** 
 ```
  
 Otherwise, the final step is to add the service provider. Open `config/app.php`, and add a new item to the providers array.
